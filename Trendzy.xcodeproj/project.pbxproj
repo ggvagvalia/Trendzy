@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		947B57F82CD7E41F00D3EE60 /* TrendzyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947B57F72CD7E41F00D3EE60 /* TrendzyApp.swift */; };
+		947B57FA2CD7E41F00D3EE60 /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947B57F92CD7E41F00D3EE60 /* MainPageView.swift */; };
+		947B57FC2CD7E42300D3EE60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947B57FB2CD7E42300D3EE60 /* Assets.xcassets */; };
+		947B57FF2CD7E42300D3EE60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947B57FE2CD7E42300D3EE60 /* Preview Assets.xcassets */; };
+		947B58062CD7EC4200D3EE60 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947B58052CD7EC4200D3EE60 /* MainPageViewModel.swift */; };
+		947B580A2CD7ED2000D3EE60 /* CodableProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947B58092CD7ED1F00D3EE60 /* CodableProductModel.swift */; };
+		947B580D2CD7ED5D00D3EE60 /* NetworkingService in Frameworks */ = {isa = PBXBuildFile; productRef = 947B580C2CD7ED5D00D3EE60 /* NetworkingService */; };
+		947B58102CD802CA00D3EE60 /* ScrollableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947B580F2CD802CA00D3EE60 /* ScrollableListView.swift */; };
+		94FE492B2CDBBE9300DB8602 /* ShoppingBagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE492A2CDBBE9300DB8602 /* ShoppingBagView.swift */; };
+		94FE492E2CDD616700DB8602 /* ShoppingBagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE492D2CDD616700DB8602 /* ShoppingBagModel.swift */; };
+		94FE49302CDD61CF00DB8602 /* ShoppingBagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE492F2CDD61CF00DB8602 /* ShoppingBagViewModel.swift */; };
+		94FE49332CDE3E7B00DB8602 /* TabViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE49322CDE3E7B00DB8602 /* TabViewContainer.swift */; };
+		94FE49352CDF979F00DB8602 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE49342CDF979F00DB8602 /* HeartButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		947B57F42CD7E41F00D3EE60 /* Trendzy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trendzy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		947B57F72CD7E41F00D3EE60 /* TrendzyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendzyApp.swift; sourceTree = "<group>"; };
+		947B57F92CD7E41F00D3EE60 /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
+		947B57FB2CD7E42300D3EE60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		947B57FE2CD7E42300D3EE60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		947B58052CD7EC4200D3EE60 /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
+		947B58092CD7ED1F00D3EE60 /* CodableProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableProductModel.swift; sourceTree = "<group>"; };
+		947B580F2CD802CA00D3EE60 /* ScrollableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableListView.swift; sourceTree = "<group>"; };
+		94FE492A2CDBBE9300DB8602 /* ShoppingBagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagView.swift; sourceTree = "<group>"; };
+		94FE492D2CDD616700DB8602 /* ShoppingBagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagModel.swift; sourceTree = "<group>"; };
+		94FE492F2CDD61CF00DB8602 /* ShoppingBagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagViewModel.swift; sourceTree = "<group>"; };
+		94FE49322CDE3E7B00DB8602 /* TabViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewContainer.swift; sourceTree = "<group>"; };
+		94FE49342CDF979F00DB8602 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		947B57F12CD7E41F00D3EE60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				947B580D2CD7ED5D00D3EE60 /* NetworkingService in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		947B57EB2CD7E41F00D3EE60 = {
+			isa = PBXGroup;
+			children = (
+				947B57F62CD7E41F00D3EE60 /* Trendzy */,
+				947B57F52CD7E41F00D3EE60 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		947B57F52CD7E41F00D3EE60 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				947B57F42CD7E41F00D3EE60 /* Trendzy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		947B57F62CD7E41F00D3EE60 /* Trendzy */ = {
+			isa = PBXGroup;
+			children = (
+				947B57F72CD7E41F00D3EE60 /* TrendzyApp.swift */,
+				94FE49312CDE3E6E00DB8602 /* TabView */,
+				947B58072CD7EC4600D3EE60 /* MainPage */,
+				94FE49292CDBBE7000DB8602 /* ShoppingBagView */,
+				947B58082CD7ECCC00D3EE60 /* Resources */,
+				947B57FD2CD7E42300D3EE60 /* Preview Content */,
+			);
+			path = Trendzy;
+			sourceTree = "<group>";
+		};
+		947B57FD2CD7E42300D3EE60 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				947B57FE2CD7E42300D3EE60 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		947B58072CD7EC4600D3EE60 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				947B580E2CD802B200D3EE60 /* ScrollableListView */,
+				947B57F92CD7E41F00D3EE60 /* MainPageView.swift */,
+				947B58052CD7EC4200D3EE60 /* MainPageViewModel.swift */,
+				947B58092CD7ED1F00D3EE60 /* CodableProductModel.swift */,
+				94FE49342CDF979F00DB8602 /* HeartButton.swift */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
+		947B58082CD7ECCC00D3EE60 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				947B57FB2CD7E42300D3EE60 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		947B580E2CD802B200D3EE60 /* ScrollableListView */ = {
+			isa = PBXGroup;
+			children = (
+				947B580F2CD802CA00D3EE60 /* ScrollableListView.swift */,
+			);
+			path = ScrollableListView;
+			sourceTree = "<group>";
+		};
+		94FE49292CDBBE7000DB8602 /* ShoppingBagView */ = {
+			isa = PBXGroup;
+			children = (
+				94FE492A2CDBBE9300DB8602 /* ShoppingBagView.swift */,
+				94FE492D2CDD616700DB8602 /* ShoppingBagModel.swift */,
+				94FE492F2CDD61CF00DB8602 /* ShoppingBagViewModel.swift */,
+			);
+			path = ShoppingBagView;
+			sourceTree = "<group>";
+		};
+		94FE49312CDE3E6E00DB8602 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				94FE49322CDE3E7B00DB8602 /* TabViewContainer.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		947B57F32CD7E41F00D3EE60 /* Trendzy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 947B58022CD7E42300D3EE60 /* Build configuration list for PBXNativeTarget "Trendzy" */;
+			buildPhases = (
+				947B57F02CD7E41F00D3EE60 /* Sources */,
+				947B57F12CD7E41F00D3EE60 /* Frameworks */,
+				947B57F22CD7E41F00D3EE60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trendzy;
+			packageProductDependencies = (
+				947B580C2CD7ED5D00D3EE60 /* NetworkingService */,
+			);
+			productName = Trendzy;
+			productReference = 947B57F42CD7E41F00D3EE60 /* Trendzy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		947B57EC2CD7E41F00D3EE60 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					947B57F32CD7E41F00D3EE60 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 947B57EF2CD7E41F00D3EE60 /* Build configuration list for PBXProject "Trendzy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 947B57EB2CD7E41F00D3EE60;
+			packageReferences = (
+				947B580B2CD7ED5D00D3EE60 /* XCRemoteSwiftPackageReference "NetworkingService" */,
+			);
+			productRefGroup = 947B57F52CD7E41F00D3EE60 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				947B57F32CD7E41F00D3EE60 /* Trendzy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		947B57F22CD7E41F00D3EE60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				947B57FF2CD7E42300D3EE60 /* Preview Assets.xcassets in Resources */,
+				947B57FC2CD7E42300D3EE60 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		947B57F02CD7E41F00D3EE60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94FE49352CDF979F00DB8602 /* HeartButton.swift in Sources */,
+				947B57FA2CD7E41F00D3EE60 /* MainPageView.swift in Sources */,
+				947B57F82CD7E41F00D3EE60 /* TrendzyApp.swift in Sources */,
+				947B58062CD7EC4200D3EE60 /* MainPageViewModel.swift in Sources */,
+				94FE49302CDD61CF00DB8602 /* ShoppingBagViewModel.swift in Sources */,
+				94FE492E2CDD616700DB8602 /* ShoppingBagModel.swift in Sources */,
+				947B580A2CD7ED2000D3EE60 /* CodableProductModel.swift in Sources */,
+				947B58102CD802CA00D3EE60 /* ScrollableListView.swift in Sources */,
+				94FE49332CDE3E7B00DB8602 /* TabViewContainer.swift in Sources */,
+				94FE492B2CDBBE9300DB8602 /* ShoppingBagView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		947B58002CD7E42300D3EE60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		947B58012CD7E42300D3EE60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		947B58032CD7E42300D3EE60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Trendzy/Preview Content\"";
+				DEVELOPMENT_TEAM = F9KH9L6Y7G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ge.gvantsa.Trendzy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		947B58042CD7E42300D3EE60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Trendzy/Preview Content\"";
+				DEVELOPMENT_TEAM = F9KH9L6Y7G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ge.gvantsa.Trendzy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		947B57EF2CD7E41F00D3EE60 /* Build configuration list for PBXProject "Trendzy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				947B58002CD7E42300D3EE60 /* Debug */,
+				947B58012CD7E42300D3EE60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		947B58022CD7E42300D3EE60 /* Build configuration list for PBXNativeTarget "Trendzy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				947B58032CD7E42300D3EE60 /* Debug */,
+				947B58042CD7E42300D3EE60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		947B580B2CD7ED5D00D3EE60 /* XCRemoteSwiftPackageReference "NetworkingService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ggvagvalia/NetworkingService.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		947B580C2CD7ED5D00D3EE60 /* NetworkingService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 947B580B2CD7ED5D00D3EE60 /* XCRemoteSwiftPackageReference "NetworkingService" */;
+			productName = NetworkingService;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 947B57EC2CD7E41F00D3EE60 /* Project object */;
+}
