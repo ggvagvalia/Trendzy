@@ -16,11 +16,21 @@ struct TabViewContainer: View {
                 .tabItem {
                         Image(systemName: "house")
                 }
-            ShoppingBagView()
+            NavigationStack {
+                ShoppingBagView()
+            }
                 .tabItem {
                     Image(systemName: "cart")
                 }
         }
+        .background(
+            VStack {
+                Color.black.frame(height: 4)
+                    .edgesIgnoringSafeArea(.top)
+                Spacer()
+            }
+        )
+        .accentColor(.black)
     }
 }
 

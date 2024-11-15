@@ -13,8 +13,6 @@ class MainPageViewModel: ObservableObject {
     
     @Published var productModel: [CodableProductModel] = []
     @Published var productsAddedToCart: [ShoppingBagModel] = []
-
-
     
     init() {
         fetchData()

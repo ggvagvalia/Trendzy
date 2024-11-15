@@ -22,7 +22,7 @@ class ShoppingBagViewModel: ObservableObject {
     
     @MainActor
     func addProductToWishlist(product: CodableProductModel, modelContext: ModelContext) {
-        let newAddedProduct = ShoppingBagModel(id: product.id, title: product.title, image: product.image)
+        let newAddedProduct = ShoppingBagModel(id: product.id, title: product.title, image: product.image, price: product.price ?? 00)
         modelContext.insert(newAddedProduct)
         productsAddedToCart.append(newAddedProduct)
         try? modelContext.save()
