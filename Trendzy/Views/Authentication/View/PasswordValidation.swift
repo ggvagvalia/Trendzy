@@ -7,43 +7,51 @@
 
 import SwiftUI
 
-struct PasswordCheckField: View {
-    @State var text = ""
+struct PasswordValidation: View {
+    @Binding var password: String
+    //    @State var text = ""
     @FocusState var isActive
     @State var showPassword: Bool = false
     @State private var checkMinCharacterCount: Bool = false
     @State private var checkPunctuation: Bool = false
     @State private var checkNumber: Bool = false
+    @Binding var isPasswordValid: Bool
     
     var progressColor: Color {
-        let containsNumbers = text.rangeOfCharacter(from: .decimalDigits) != nil
-        let containsPunctuation = text.rangeOfCharacter(from: CharacterSet(charactersIn: "!?@#%^&")) != nil
+        if isPasswordValid {
+              return .green
+          } else if password.count > 6 {
+              return .yellow
+          } else {
+              return .red
+          }
+    }
+    
+    func validatePassword(_ password: String) {
+        let alphabeticCount = password.filter { $0.isLetter }.count
+        let containsMinLength = alphabeticCount >= 6
+        let containsNumber = password.rangeOfCharacter(from: .decimalDigits) != nil
+        let containsPunctuation = password.rangeOfCharacter(from: CharacterSet(charactersIn: "!?@#%^&")) != nil
         
-        if containsNumbers && containsPunctuation && text.count > 5 {
-            return .green
-        } else if !containsNumbers && containsPunctuation {
-            return .red
-        } else if containsNumbers && !containsPunctuation {
-            return .yellow
-        } else if containsNumbers && containsPunctuation {
-            return .blue
-        } else {
-            return .gray
-        }
+        checkMinCharacterCount = containsMinLength
+        checkNumber = containsNumber
+        checkPunctuation = containsPunctuation
+        
+        isPasswordValid = containsMinLength && containsNumber && containsPunctuation
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             ZStack(alignment: .leading) {
                 ZStack {
-                    SecureField("", text: $text)
+                    SecureField("Password", text: $password)
                         .padding(.leading)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
                         .focused($isActive)
                         .background(.gray.opacity(0.3), in: .rect(cornerRadius: 16))
                         .opacity(showPassword ? 0 : 1)
-                    TextField("", text: $text)
+                    TextField("", text: $password)
                         .padding(.leading)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55).focused($isActive)
@@ -51,17 +59,16 @@ struct PasswordCheckField: View {
                         .opacity(showPassword ? 1 : 0)
                 }
                 Text("Password").padding(.horizontal)
-                    .offset(y: (isActive || !text.isEmpty ? -50 : 0))
+                    .offset(y: (isActive || !password.isEmpty ? -40 : 0))
                     .foregroundStyle(isActive ? .gray : .secondary)
                     .animation(.spring, value: isActive)
                     .onTapGesture {
                         isActive = true
                     }
-                    .onChange(of: text, { oldValue, newValue in
+                    .onChange(of: password, { oldValue, newValue in
                         withAnimation {
-                            checkMinCharacterCount = newValue.count >= 8
-                            checkNumber = newValue.rangeOfCharacter(from: .decimalDigits) != nil
-                            checkPunctuation = newValue.rangeOfCharacter(from: CharacterSet(charactersIn: "!?@#%^&")) != nil
+//                            _ = progressColor
+                            validatePassword(newValue) //
                         }
                     })
             }
@@ -75,10 +82,13 @@ struct PasswordCheckField: View {
                     }
             }
             VStack(alignment: .leading, spacing: 10) {
-                CheckText(text: "Minimum 8 characters", check: $checkMinCharacterCount)
+                CheckText(text: "Minimum 6 characters", check: $checkMinCharacterCount)
                 CheckText(text: "(!?@#%^&)", check: $checkPunctuation)
                 CheckText(text: "Number", check: $checkNumber)
             }
+            ProgressView(value: min(Double(password.count), 8), total: 8)
+                         .progressViewStyle(LinearProgressViewStyle(tint: progressColor))
+            
         }
     }
 }
@@ -90,8 +100,10 @@ struct CheckText: View {
     var body: some View {
         HStack {
             Image(systemName: check ? "checkmark.circle.fill" : "circle")
+                .foregroundColor(check ? .green : .gray)
                 .contentTransition(.symbolEffect)
             Text(text)
+                .foregroundColor(check ? .green : .gray)
         }
         .foregroundStyle(check ? .primary : .secondary)
     }

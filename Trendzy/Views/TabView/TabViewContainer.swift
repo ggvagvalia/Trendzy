@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TabViewContainer: View {
-    
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+
     init() {
           let tabBarAppearance = UITabBarAppearance()
           tabBarAppearance.configureWithOpaqueBackground()
@@ -19,36 +20,46 @@ struct TabViewContainer: View {
       }
     
     var body: some View {
-            TabView {
-                NavigationStack {
-                    
-                    HomeView()
-                }
+//        Group {
+            if viewModel.userSession != nil {
+                
+                TabView {
+                    NavigationStack {
+                        HomeView()
+                    }
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                    ShoppingBag()
                         .tabItem {
-                            Label("Home", systemImage: "house")
+                            Label("Shopping Bag", systemImage: "cart")
                         }
-                ShoppingBag()
-                    .tabItem {
-                        Label("Shopping Bag", systemImage: "cart")
-                    }
-                FavouritesPage()
-                    .tabItem {
-                        Label("Favorites", systemImage: "heart")
-                    }
-                ProfileView()
-                    .tabItem {
-                        Label("Profile", systemImage: "person")
-                    }
-            }
-
-            .background(
-                VStack {
-                    Color.black.frame(height: 4)
-                        .edgesIgnoringSafeArea(.top)
-                    Spacer()
+                    FavouritesPage()
+                        .tabItem {
+                            Label("Favorites", systemImage: "heart")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
                 }
-            )
-            .accentColor(.black)
+                
+                .background(
+                    VStack {
+                        Color.black.frame(height: 4)
+                            .edgesIgnoringSafeArea(.top)
+                        Spacer()
+                    }
+                )
+                .accentColor(.black)
+            } else {
+                NavigationStack {
+                    AuthenticationScreen()
+//                        .safeAreaPadding()
+                }
+                .safeAreaPadding()
+            }
+//        }
     }
 }
 

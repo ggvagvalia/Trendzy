@@ -20,7 +20,7 @@ struct EmailView: View {
                 .frame(height: 55).focused($isActive)
                 .background(.gray.opacity(0.3), in: .rect(cornerRadius: 16))
             Text(title).padding(.leading)
-                .offset(y: (isActive || !text.isEmpty ? -50 : 0))
+                .offset(y: (isActive || !text.isEmpty ? -40 : 0))
                 .animation(.spring, value: isActive)
                 .foregroundStyle(isActive ? .primary : .secondary)
                 .onTapGesture {

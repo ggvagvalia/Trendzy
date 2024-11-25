@@ -1,5 +1,5 @@
 //
-//  SignInScreen.swift
+//  LoginScreen.swift
 //  Trendzy
 //
 //  Created by gvantsa gvagvalia on 11/21/24.
@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct SignInScreen: View {
+struct LoginScreen: View {
     @FocusState var isActive
     @Binding var email: String
+    @Binding var fullName: String
     @Binding var password: String
     @Binding var remember: Bool
-    //    @Binding var showSignIn: Bool
-    @Binding var showSignUp: Bool
+    //    @Binding var showSignUp: Bool
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     
-    var action: () -> Void
+//    var action: () -> Void
     
     var body: some View {
         VStack(spacing: 45) {
@@ -42,9 +43,10 @@ struct SignInScreen: View {
                 
             }
             //                                .padding()
-            
-            SignInButton(title: "Sign In") {
-                
+            SignInUpButton(title: "Sign In") {
+                Task {
+                    try await viewModel.singnIn(with: email, password: password)
+                }
             }
             //                .padding(.vertical)
             
@@ -58,16 +60,29 @@ struct SignInScreen: View {
             
             Spacer()
             
-            Button(action: {
-                email = ""
-                password = ""
-                withAnimation {
-                    showSignUp.toggle()
-                }
-            }, label: {
+            NavigationLink {
+                RegistrationScreen(
+                    email: $email,
+                    fullName: $fullName,
+                    password: $password,
+                    remember: $remember)
+                    .safeAreaPadding()
+                    .navigationBarBackButtonHidden(true)
+            } label: {                                
                 Text("Don't have an account? ***Sign up***")
-            })
-            .tint(.primary)
+                            .tint(.primary)
+
+            }
+            //            Button(action: {
+            //                email = ""
+            //                password = ""
+            //                withAnimation {
+            //                    showSignUp.toggle()
+            //                }
+            //            }, label: {
+            //                Text("Don't have an account? ***Sign up***")
+            //            })
+            //            .tint(.primary)
         }
         .padding()
     }
@@ -89,8 +104,6 @@ struct TopView: View {
     }
 }
 
-
-
 struct RememberEnteredInfo: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         Button {
@@ -106,12 +119,14 @@ struct RememberEnteredInfo: ToggleStyle {
     }
 }
 
-struct SignInButton: View {
+struct SignInUpButton: View {
     var title: String
+    //    var action: () -> Void
     var action: () -> Void
     
     var body: some View {
         Button(action: {
+            action()
             
         }, label: {
             Text(title)
@@ -174,5 +189,6 @@ enum AccountsSystemImages: String {
 }
 
 #Preview {
-    SignInUpScreen()
+    AuthenticationScreen()
+        .environmentObject(AuthenticationViewModel())
 }
