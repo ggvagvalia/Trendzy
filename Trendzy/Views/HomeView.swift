@@ -9,42 +9,24 @@ import SwiftUI
 
 struct HomeView: View {
     
-//    @State private var selectedCategory: Int = 0
-//    @State private var showMainPage: Bool = false
-    
     var body: some View {
-            ZStack(alignment: .top) {
-//                Color.black.edgesIgnoringSafeArea(.all)
-                //            ZStack {
+        NavigationStack {
+            ZStack {
                 VStack(spacing: 0) {
                     HeaderView()
-                        .safeAreaPadding(.top, 50)
-                    ScrollView(.vertical) {
-                        VStack(spacing: 0) {
-                            HeroImageView()
-
-                            CategoriesView()
-                                .safeAreaPadding()
-
-//                            MainPageView()
-//                                .id("MainPageView")
-//                                .safeAreaPadding()
-                            Spacer()
-                        }
-                        Spacer()
-//                        .padding(.vertical)
+                    VStack(spacing: 0) {
+                        HeroImageView()
+                        CategoriesView()
                     }
-//                    .background(.black)
-                    .safeAreaPadding()
+                    Spacer()
                 }
-                .edgesIgnoringSafeArea(.all)
-//
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .safeAreaPadding()
             }
             .safeAreaPadding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
-
 
 struct HeaderView: View {
     var body: some View {
@@ -57,6 +39,7 @@ struct HeaderView: View {
     }
 }
 
+
 @ViewBuilder
 private func HeroImageView() -> some View {
     ZStack {
@@ -64,8 +47,7 @@ private func HeroImageView() -> some View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(maxWidth: .infinity)
-            .frame(height: 570)
-//            .frame(height: screenhe)
+            .frame(height: 600)
         
         Button {
             print("Explore Collection")
@@ -87,27 +69,20 @@ private func HeroImageView() -> some View {
 }
 
 struct CategoriesView: View {
-
+    
     var body: some View {
         NavigationLink(destination: MainPageView()) {
-        VStack {
-
-                Text("Go   to   Main  Page")
+            VStack {
+                Text("Go to Main Page")
                     .font(Font.custom("EduAUVICWANTPre-Regular", size: 32))
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.black)
                     .foregroundStyle(.white)
-            
-            //            Image("Divider1")
-            //                .resizable()
-            //                .aspectRatio(contentMode: .fill)
-            //                .frame(width: 300, height: 40)
-            //                .padding(.top, 5)
+            }
         }
-        .frame(maxWidth: .infinity)
-        .background(.black)
-    }
     }
 }
-
 #Preview {
     HomeView()
         .environmentObject(MainPageViewModel())

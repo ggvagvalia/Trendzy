@@ -8,34 +8,52 @@
 import SwiftUI
 
 struct TabViewContainer: View {
-//    var codableProduct: CodableProductModel
+    
+    init() {
+          let tabBarAppearance = UITabBarAppearance()
+          tabBarAppearance.configureWithOpaqueBackground()
+          tabBarAppearance.backgroundColor = .systemBackground
 
+          UITabBar.appearance().standardAppearance = tabBarAppearance
+          UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+      }
+    
     var body: some View {
-        TabView {
-            MainPageView()
-                .tabItem {
-                        Image(systemName: "house")
+            TabView {
+                NavigationStack {
+                    
+                    HomeView()
                 }
-            NavigationStack {
-                ShoppingBagView()
+                        .tabItem {
+                            Label("Home", systemImage: "house")
+                        }
+                ShoppingBag()
+                    .tabItem {
+                        Label("Shopping Bag", systemImage: "cart")
+                    }
+                FavouritesPage()
+                    .tabItem {
+                        Label("Favorites", systemImage: "heart")
+                    }
+                ProfileView()
+                    .tabItem {
+                        Label("Profile", systemImage: "person")
+                    }
             }
-                .tabItem {
-                    Image(systemName: "cart")
+
+            .background(
+                VStack {
+                    Color.black.frame(height: 4)
+                        .edgesIgnoringSafeArea(.top)
+                    Spacer()
                 }
-        }
-        .background(
-            VStack {
-                Color.black.frame(height: 4)
-                    .edgesIgnoringSafeArea(.top)
-                Spacer()
-            }
-        )
-        .accentColor(.black)
+            )
+            .accentColor(.black)
     }
 }
 
-#Preview {
-    TabViewContainer()
-        .environmentObject(MainPageViewModel())
-        .environmentObject(ShoppingBagViewModel())
-}
+//#Preview {
+//    TabViewContainer()
+//        .environmentObject(MainPageViewModel())
+//        .environmentObject(ShoppingBagViewModel())
+//}

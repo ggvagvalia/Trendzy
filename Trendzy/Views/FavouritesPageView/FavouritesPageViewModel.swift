@@ -6,13 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct FavouritesPageViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    FavouritesPageViewModel()
-}
+//
+//class FavouritesPageViewModel: ObservableObject {
+//    @Published var productsAddedToFavouritesPage: [FavouritesPageModel] = []
+//    
+//    func updateFavouritesPage(from products: [FavouritesPageModel]) {
+//        productsAddedToFavouritesPage = products
+//    }
+//    
+//    @MainActor
+//    func isProductInFavouritesPage(product: CodableProductModel) -> Bool {
+//        productsAddedToFavouritesPage.contains { $0.productID == product.id }
+//    }
+//    
+//    @MainActor
+//    func addProductToFavouritesPage(product: CodableProductModel, modelContext: ModelContext) {
+//        let newAddedProduct = FavouritesPageModel(id: product.id, title: product.title, image: product.image, price: product.price ?? 00)
+//        modelContext.insert(newAddedProduct)
+//        try? modelContext.save()
+//        productsAddedToFavouritesPage.append(newAddedProduct)
+//
+//    }
+//    
+//    func removeBookFromFavouritesPage(addedProduct: FavouritesPageModel, modelContext: ModelContext) {
+//        modelContext.delete(addedProduct)
+//        try? modelContext.save()
+//        productsAddedToFavouritesPage.removeAll { $0.id == addedProduct.id}
+//
+//    }
+//    
+//}

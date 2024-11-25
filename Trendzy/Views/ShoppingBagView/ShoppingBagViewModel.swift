@@ -9,28 +9,30 @@ import Foundation
 import SwiftData
 
 class ShoppingBagViewModel: ObservableObject {
-    @Published var productsAddedToCart: [ShoppingBagModel] = []
+    @Published var productsAddedToShoppingBag: [ShoppingBagModel] = []
     
-    func updateFavorites(from products: [ShoppingBagModel]) {
-        productsAddedToCart = products
+    func updateShoppingPage(from products: [ShoppingBagModel]) {
+        productsAddedToShoppingBag = products
     }
     
     @MainActor
-    func isProductInWishlist(product: CodableProductModel) -> Bool {
-        productsAddedToCart.contains { $0.productID == product.id }
+    func isProductInShoppingBag(product: CodableProductModel) -> Bool {
+        productsAddedToShoppingBag.contains { $0.productID == product.id }
     }
     
     @MainActor
-    func addProductToWishlist(product: CodableProductModel, modelContext: ModelContext) {
+    func addProductToShoppingBag(product: CodableProductModel, modelContext: ModelContext) {
         let newAddedProduct = ShoppingBagModel(id: product.id, title: product.title, image: product.image, price: product.price ?? 00)
         modelContext.insert(newAddedProduct)
-        productsAddedToCart.append(newAddedProduct)
+        productsAddedToShoppingBag.append(newAddedProduct)
         try? modelContext.save()
     }
     
-    func removeBookFromWishlist(addedProduct: ShoppingBagModel, modelContext: ModelContext) {
+    
+    func removeBookFromShoppingBag(addedProduct: ShoppingBagModel, modelContext: ModelContext) {
         modelContext.delete(addedProduct)
-        productsAddedToCart.removeAll { $0.id == addedProduct.id}
+        productsAddedToShoppingBag.removeAll { $0.id == addedProduct.id}
         try? modelContext.save()
     }
+
 }

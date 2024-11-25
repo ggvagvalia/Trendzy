@@ -26,10 +26,9 @@ struct ProductDetailView: View {
             }
             HStack {
                 Text(title)
-                HeartButton(product: product, shoppingBagViewModel: _shoppingBagViewModel)
+                AddToShoppingBagButton(product: product, shoppingBagViewModel: _shoppingBagViewModel)
             }
         }
-//        .frame(width: 50, height: 50)
         .padding()
     }
 }

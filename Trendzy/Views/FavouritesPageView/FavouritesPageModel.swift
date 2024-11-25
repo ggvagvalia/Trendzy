@@ -5,14 +5,25 @@
 //  Created by gvantsa gvagvalia on 11/15/24.
 //
 
-import SwiftUI
-
-struct FavouritesPageModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    FavouritesPageModel()
-}
+import Foundation
+//import SwiftData
+//
+//@Model
+//class FavouritesPageModel {
+//    var id: UUID = UUID()
+//    var productID: Int?
+//    var title: String
+//    var image: String
+//    var price: Double?
+//    
+//    var formattedPrice: String {
+//        String(format: "%.2f", price ?? 00)
+//    }
+//    
+//    init(id: Int?, title: String, image: String, price: Double) {
+//        self.productID = id
+//        self.title = title
+//        self.image = image
+//        self.price = price
+//    }
+//}

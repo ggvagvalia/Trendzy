@@ -8,8 +8,6 @@
 import Foundation
 import SwiftData
 
-
-
 @Model
 class ShoppingBagModel {
     var id: UUID = UUID()
@@ -17,11 +15,11 @@ class ShoppingBagModel {
     var title: String
     var image: String
     var price: Double?
-    //   @Attribute var image: String
     
     var formattedPrice: String {
         String(format: "%.2f", price ?? 00)
     }
+    
     init(id: Int?, title: String, image: String, price: Double) {
         self.productID = id
         self.title = title
