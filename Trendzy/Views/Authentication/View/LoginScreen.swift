@@ -48,6 +48,8 @@ struct LoginScreen: View {
                     try await viewModel.singnIn(with: email, password: password)
                 }
             }
+            .disabled(!formIssValid)
+            .opacity(formIssValid ? 1.0 : 0.5)
             //                .padding(.vertical)
             
             OrView(title: "or")
@@ -186,6 +188,15 @@ enum AccountsSystemImages: String {
     case apple = "apple.logo"
     case email = "envelope.fill"
     case google = "g.circle"
+}
+
+extension LoginScreen: AuthenticationFormProtocol {
+    var formIssValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 8
+    }
 }
 
 #Preview {

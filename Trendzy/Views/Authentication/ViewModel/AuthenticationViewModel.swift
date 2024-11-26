@@ -43,7 +43,14 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func singnIn(with email: String, password: String) async throws {
-        print("sign in")
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            self.userSession = result.user
+            // MARK: - u have to sign in first and then fetch the useruid to display uder data
+            await fetchUser()
+        } catch {
+            print("failed to login with error - \(error.localizedDescription)")
+        }
     }
  
     func singnOut() {
@@ -62,7 +69,6 @@ class AuthenticationViewModel: ObservableObject {
     
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
         self.currentUser = try? snapshot.data(as: User.self)
 //        print("debug! current user is \(self.currentUser)")

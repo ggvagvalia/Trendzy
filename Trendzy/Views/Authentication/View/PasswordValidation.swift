@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+protocol AuthenticationFormProtocol {
+    var formIssValid: Bool { get }
+}
 struct PasswordValidation: View {
     @Binding var password: String
     //    @State var text = ""
