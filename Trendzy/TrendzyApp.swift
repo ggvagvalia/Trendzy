@@ -12,10 +12,10 @@ import Firebase
 @main
 struct TrendzyApp: App {
     
-    @StateObject private var mainPageViewModel = MainPageViewModel()
+    @StateObject private var mainPageViewModel = ProductsListPageViewModel()
     @StateObject private var shoppingBagViewModel = ShoppingBagViewModel()
     @StateObject private var authenticationViewModel = AuthenticationViewModel()
-//    @StateObject private var favouritesPageViewModel = FavouritesPageViewModel()
+    @StateObject private var favouritesPageViewModel = FavouritesPageViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -27,9 +27,8 @@ struct TrendzyApp: App {
                 .environmentObject(mainPageViewModel)
                 .environmentObject(shoppingBagViewModel)
                 .environmentObject(authenticationViewModel)
-//                .environmentObject(favouritesPageViewModel)
+                .environmentObject(favouritesPageViewModel)
         }
-        .modelContainer(for: ShoppingBagModel.self)
-//        .modelContainer(for: FavouritesPageModel.self)
+        .modelContainer(for: [ShoppingBagModel.self, FavouritesPageModel.self])
     }
 }

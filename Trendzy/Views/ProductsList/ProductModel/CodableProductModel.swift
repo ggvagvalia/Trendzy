@@ -40,12 +40,6 @@ enum Categories: String, Decodable, CaseIterable {
     }
 }
 
-//
-//enum GenderCategories: String {
-//
-//}
-
-
 struct ProductWithCartState: Identifiable {
     var id: UUID = UUID()
     var product: CodableProductModel

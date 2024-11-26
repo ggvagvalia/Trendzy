@@ -48,8 +48,9 @@ struct ShoppingBag: View {
                             JustifiedText(text: product.title)
                             JustifiedText(text: product.formattedPrice)
                         }
+                        
                         Spacer()
-                        // MARK: - es moviedp-s appshic gadavitanooo!!!
+
                         AddToShoppingBagButton(product: CodableProductModel(id: product.productID, title: product.title, image: product.image))
                             .environmentObject(shoppingBagViewModel)
                         
@@ -61,7 +62,6 @@ struct ShoppingBag: View {
             VStack {
                 HStack {
                     Text("Subtotal")
-                    //                        .font(.custom("Tenor Sans", size: 12))
                         .font(.custom("Papyrus", size: 12))
                     Spacer()
                     Text(Subtotal + "" + "$")
@@ -98,7 +98,6 @@ struct ShoppingBag: View {
             .padding(.horizontal)
         }
         .onAppear {
-            
             shoppingBagViewModel.updateShoppingPage(from: productsInShoppingBag)
         }
     }

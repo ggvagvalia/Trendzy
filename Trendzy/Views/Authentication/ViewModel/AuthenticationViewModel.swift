@@ -27,7 +27,7 @@ class AuthenticationViewModel: ObservableObject {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
-            let user = User(id: result.user.uid, fullName: fullName, email: email)
+            let user = User(id: result.user.uid, fullName: fullName, email: email, mobileNumber: "", adress: "")
             let encodedUser = try Firestore.Encoder().encode(user)
             
             // MARK: this one - uploads info to firebase !
@@ -35,6 +35,7 @@ class AuthenticationViewModel: ObservableObject {
             
             // MARK: ეს იმისთვის რომ როცა დალოგინებულ იუზერზე შევა, იუზერის შექმნის მომენტშივე, იმავდროულად მოახდინოს ამ იუზერის ინფორმაციის წამოღება.
             await fetchUser()
+            
         } catch {
             print("failed to create user with error - \(error.localizedDescription)")
         }
@@ -71,7 +72,40 @@ class AuthenticationViewModel: ObservableObject {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
         self.currentUser = try? snapshot.data(as: User.self)
-//        print("debug! current user is \(self.currentUser)")
+    }
+    
+    func addAddress(newAddress: String) async {
+        guard let userID = userSession?.uid else {
+            print("User ID not available")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(userID)
+        
+        do {
+             try await ref.updateData(["adress": newAddress])
+             await fetchUser() // Optional: Refresh local user data after updating Firestore
+         } catch {
+             print("Failed to update address: \(error.localizedDescription)")
+         }
+    }
+    
+    func addMobileNumber(mobileNumber: String) async {
+        guard let userID = userSession?.uid else {
+            print("User ID not available")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(userID)
+        
+        do {
+             try await ref.updateData(["mobileNumber": mobileNumber])
+             await fetchUser() // Optional: Refresh local user data after updating Firestore
+         } catch {
+             print("Failed to update mobile Number: \(error.localizedDescription)")
+         }
     }
 }
 

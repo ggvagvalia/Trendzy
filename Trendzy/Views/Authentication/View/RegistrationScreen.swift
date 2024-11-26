@@ -52,7 +52,6 @@ struct RegistrationScreen: View {
                     AccountsView(image: .email, width: 30, height: 30) {}
                     AccountsView(image: .google, width: 30, height: 30) {}
                 }
-                
             }
         }
         .safeAreaPadding()
@@ -66,6 +65,7 @@ struct RegistrationScreen: View {
         }
     }
 }
+
 //
 //#Preview {
 //    RegistrationScreen()

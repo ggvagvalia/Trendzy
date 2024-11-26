@@ -38,7 +38,7 @@ struct TabViewContainer: View {
                         .tabItem {
                             Label("Favorites", systemImage: "heart")
                         }
-                    ProfileView()
+                    ProfilePage()
                         .tabItem {
                             Label("Profile", systemImage: "person")
                         }

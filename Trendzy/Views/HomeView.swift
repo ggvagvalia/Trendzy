@@ -39,7 +39,6 @@ struct HeaderView: View {
     }
 }
 
-
 @ViewBuilder
 private func HeroImageView() -> some View {
     ZStack {
@@ -71,7 +70,7 @@ private func HeroImageView() -> some View {
 struct CategoriesView: View {
     
     var body: some View {
-        NavigationLink(destination: MainPageView()) {
+        NavigationLink(destination: ProductsListPage()) {
             VStack {
                 Text("Go to Main Page")
                     .font(Font.custom("EduAUVICWANTPre-Regular", size: 32))
@@ -83,8 +82,9 @@ struct CategoriesView: View {
         }
     }
 }
+
 #Preview {
     HomeView()
-        .environmentObject(MainPageViewModel())
+        .environmentObject(ProductsListPageViewModel())
         .environmentObject(ShoppingBagViewModel())
 }

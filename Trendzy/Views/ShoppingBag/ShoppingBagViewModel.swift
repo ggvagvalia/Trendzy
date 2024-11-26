@@ -28,8 +28,7 @@ class ShoppingBagViewModel: ObservableObject {
         try? modelContext.save()
     }
     
-    
-    func removeBookFromShoppingBag(addedProduct: ShoppingBagModel, modelContext: ModelContext) {
+    func removeProductFromShoppingBag(addedProduct: ShoppingBagModel, modelContext: ModelContext) {
         modelContext.delete(addedProduct)
         productsAddedToShoppingBag.removeAll { $0.id == addedProduct.id}
         try? modelContext.save()

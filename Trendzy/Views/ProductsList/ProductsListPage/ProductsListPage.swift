@@ -1,5 +1,5 @@
 //
-//  MainPageView.swift
+//  ProductsListPage.swift
 //  Trendzy
 //
 //  Created by gvantsa gvagvalia on 11/3/24.
@@ -17,10 +17,12 @@ extension View {
     }
 }
 
-struct MainPageView: View {
-    @EnvironmentObject var mainPage: MainPageViewModel
+struct ProductsListPage: View {
+    @EnvironmentObject var mainPage: ProductsListPageViewModel
     @EnvironmentObject var shoppingBagViewModel: ShoppingBagViewModel
+    @EnvironmentObject var favouritesPageViewModel: FavouritesPageViewModel
     @Query var shoppingBagProducts: [ShoppingBagModel] = []
+    @Query var favouriteProducts: [FavouritesPageModel] = []
     private var categories = Categories.allCases.map { $0.rawValue }
     @State private var selectedCategory: Int = 0
     
@@ -45,7 +47,10 @@ struct MainPageView: View {
                             }
                     }
                 }
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 5),
+                    GridItem(.flexible(), spacing: 5)
+                ], spacing: 5) {
                     ForEach(filteredProducts) { product in
                         NavigationLink {
                             ProductDetailView(image: product.image, title: product.title, product: product)
@@ -55,21 +60,23 @@ struct MainPageView: View {
                                 productImage: product.image,
                                 product: product
                             )
-                            .frame(maxWidth: .infinity)
-                            .safeAreaPadding()
                         }
                     }
                 }
+                
                 .navigationDestination(for: CodableProductModel.self) { product in
                     ProductDetailView(image: product.image, title: product.title, product: product)
                 }
-                .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
+            .padding(.vertical, 5)
+            
             .onAppear {
                 shoppingBagViewModel.productsAddedToShoppingBag = shoppingBagProducts
+                favouritesPageViewModel.productsAddedToFavouritesPage = favouriteProducts
             }
         }
+        .padding(.vertical, 5)
+        
     }
 }
 
@@ -78,6 +85,7 @@ private struct ProductView: View {
     var productImage: String
     var product: CodableProductModel
     @EnvironmentObject var shoppingBagViewModel: ShoppingBagViewModel
+    @EnvironmentObject var favouritesPageViewModel: FavouritesPageViewModel
     
     var body: some View {
         
@@ -103,27 +111,35 @@ private struct ProductView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .padding(4)
             
-            HStack {
-                
-                Text("\(product.formattedPrice) ლ")
-                    .font(.system(size: 18))
-                Spacer()
-                
-                VStack {
-                    AddToShoppingBagButton(product: product, shoppingBagViewModel: _shoppingBagViewModel)
+            VStack {
+                HStack {
+                    
+                    Text("\(product.formattedPrice) ლ")
+                        .font(.system(size: 18))
+                    Spacer()
+                    AddToFavouritesButton(product: product, favouritesPageViewModel: _favouritesPageViewModel)
+//                        .contentShape(Rectangle())
+
                 }
                 
+                HStack {
+                    Spacer()
+                    AddToShoppingBagButton(product: product, shoppingBagViewModel: _shoppingBagViewModel)
+//                        .contentShape(Rectangle())
+
+                }
+                .frame(maxWidth: .infinity)
             }
             .bold()
             .padding(10)
             .background(.ultraThinMaterial)
             .cornerRadius(20)
+
         }
-        .frame(width: 180, height: 230)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.primary, lineWidth: 1)
-        )
+        //        .overlay(
+        //            RoundedRectangle(cornerRadius: 16)
+        //                .stroke(.primary, lineWidth: 1)
+        //        )
     }
 }
 
@@ -226,7 +242,7 @@ private struct CategoryView: View {
     }
 }
 #Preview {
-    MainPageView()
-        .environmentObject(MainPageViewModel())
+    ProductsListPage()
+        .environmentObject(ProductsListPageViewModel())
         .environmentObject(ShoppingBagViewModel())
 }

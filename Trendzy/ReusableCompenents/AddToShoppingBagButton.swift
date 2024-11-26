@@ -18,7 +18,7 @@ struct AddToShoppingBagButton: View {
             Button(action: {
                 if shoppingBagViewModel.isProductInShoppingBag(product: product) {
                     if let addedProduct = shoppingBagViewModel.productsAddedToShoppingBag.first(where: { $0.productID == product.id }) {
-                        shoppingBagViewModel.removeBookFromShoppingBag(addedProduct: addedProduct, modelContext: modelContext)
+                        shoppingBagViewModel.removeProductFromShoppingBag(addedProduct: addedProduct, modelContext: modelContext)
                     }
                 } else {
                     shoppingBagViewModel.addProductToShoppingBag(product: product, modelContext: modelContext)

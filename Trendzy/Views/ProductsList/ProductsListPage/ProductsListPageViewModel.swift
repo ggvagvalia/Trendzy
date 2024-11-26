@@ -1,5 +1,5 @@
 //
-//  MainPageViewModel.swift
+// ProductsListPageViewModel.swift
 //  Trendzy
 //
 //  Created by gvantsa gvagvalia on 11/3/24.
@@ -9,7 +9,7 @@ import Foundation
 import NetworkingService
 import SwiftData
 
-class MainPageViewModel: ObservableObject {
+class ProductsListPageViewModel: ObservableObject {
     
     @Published var productModel: [CodableProductModel] = []
 //    @Published var productsAddedToCart: [ShoppingBagModel] = []
