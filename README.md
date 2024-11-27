@@ -6,6 +6,11 @@ Shopping App
 This is a SwiftUI-based iOS shopping app that allows users to register and log in using Firebase Authentication and manage their account information in Firestore. After logging in, users can explore shopping features organized into four main sections via a Tab Bar interface.
 
 ---
+
+## Video Walkthrough
+https://drive.google.com/file/d/1xX7hB8GxVa3TOv9K-WURbrE9T6XMgr_B/view?usp=sharing
+
+---
  
 ## Screenshots
 
