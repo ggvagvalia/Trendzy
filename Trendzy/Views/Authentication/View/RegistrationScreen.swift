@@ -13,11 +13,9 @@ struct RegistrationScreen: View {
     @Binding var fullName: String
     @Binding var password: String
     @Binding var remember: Bool
-    //    @Binding var showSignIn: Bool
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @State private var isPasswordValid: Bool = false // Track password validation status
-
-    //    var action: () -> Void
+    @State private var isPasswordValid: Bool = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
         ScrollView {
@@ -31,19 +29,21 @@ struct RegistrationScreen: View {
                 
                 PasswordValidation(password: $password, isPasswordValid: $isPasswordValid)
                 
-                Button(action: {
+                SignInUpButton(title: "Sign Up") {
                     Task {
-                        print("Password: \(password)") 
+                        print("Password: \(password)")
                         guard isPasswordValid else {
                             print("Password must be at least 6 characters long.")
                             return
                         }
                         try await viewModel.createUser(withEmail: email, password: password, fullName: fullName)
+                        if viewModel.registeringError != nil {
+                            showAlert = true
+                        }
                     }
-                }, label: {
-                    Text("Sign Up")
-                })
-                .disabled(!isPasswordValid)
+                }
+                .disabled(!formIssValid)
+                .opacity(formIssValid ? 1.0 : 0.5)
                 
                 OrView(title: "or")
                 
@@ -55,7 +55,15 @@ struct RegistrationScreen: View {
             }
         }
         .safeAreaPadding()
-        
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Sign In Failed"),
+                message: Text(viewModel.signInError ?? "Unknown error"),
+                dismissButton: .default(Text("OK")) {
+                    viewModel.registeringError = nil
+                }
+            )
+        }
         NavigationLink {
             LoginScreen(email: $email, fullName: $fullName, password: $password, remember: $remember)
                 .navigationBarBackButtonHidden(true)
@@ -66,7 +74,16 @@ struct RegistrationScreen: View {
     }
 }
 
-//
+extension RegistrationScreen: AuthenticationFormProtocol {
+    var formIssValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+        && password.count > 5
+        && password.filter { $0.isLetter }.count >= 6
+    }
+}
+
 //#Preview {
 //    RegistrationScreen()
 //}

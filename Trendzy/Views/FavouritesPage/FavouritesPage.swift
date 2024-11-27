@@ -41,6 +41,7 @@ struct FavouritesPage: View {
                         
                         VStack(alignment: .leading) {
                             JustifiedText(text: product.title)
+                            Spacer()
                             JustifiedText(text: product.formattedPrice)
                         }
 

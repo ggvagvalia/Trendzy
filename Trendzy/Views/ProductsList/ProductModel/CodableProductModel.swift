@@ -13,6 +13,7 @@ struct CodableProductModel: Decodable, Identifiable, Hashable {
     var title: String
     var image: String
     var price: Double?
+    var description: String?
     var category: Categories?
     
     var formattedPrice: String {

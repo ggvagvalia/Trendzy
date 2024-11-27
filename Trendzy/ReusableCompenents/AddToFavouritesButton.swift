@@ -1,5 +1,5 @@
 //
-//  HeartButton.swift
+//  AddToFavouritesButton.swift
 //  Trendzy
 //
 //  Created by gvantsa gvagvalia on 11/9/24.
@@ -27,6 +27,7 @@ struct AddToFavouritesButton: View {
             }, label: {
                 Image(systemName: favouritesPageViewModel.isProductInFavouritesPage(product: product) ? "heart.fill" : "heart")
                     .font(.system(size: 20))
+                    .foregroundStyle(favouritesPageViewModel.isProductInFavouritesPage(product: product) ? .red : .primary)
             })
         }
     }

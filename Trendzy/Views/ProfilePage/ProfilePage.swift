@@ -22,7 +22,7 @@ struct ProfilePage: View {
                 Text(user.initials)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.title)
-                
+                    .padding()
                 Form {
                     Section(header: Text("Full Name")) {
                         TextField("Full Name", text: $fullName)
@@ -99,7 +99,21 @@ struct ProfilePage: View {
             }
         }
     } else {
-        Text("No user data available.")
+        VStack {
+            Text("No user data available.")
+                    Section {
+                        Button(action: {
+                            viewModel.singnOut()
+                        }) {
+                            HStack {
+                                Image(systemName: "arrow.left.circle.fill")
+                                Text("Sign Out")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                        
+                    }
+        }
     }
 }
 }

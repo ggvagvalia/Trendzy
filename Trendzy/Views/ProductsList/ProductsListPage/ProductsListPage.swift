@@ -54,6 +54,7 @@ struct ProductsListPage: View {
                     ForEach(filteredProducts) { product in
                         NavigationLink {
                             ProductDetailView(image: product.image, title: product.title, product: product)
+//                            ProductsListView(image: product.image, title: product.title, price: product.formattedPrice)
                         } label: {
                             ProductView(
                                 productTitle: product.title,
@@ -66,6 +67,7 @@ struct ProductsListPage: View {
                 
                 .navigationDestination(for: CodableProductModel.self) { product in
                     ProductDetailView(image: product.image, title: product.title, product: product)
+//                    ProductsListView(image: product.image, title: product.title, price: product.formattedPrice)
                 }
             }
             .padding(.vertical, 5)

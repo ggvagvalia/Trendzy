@@ -12,7 +12,6 @@ struct ShoppingBag: View {
     @EnvironmentObject private var shoppingBagViewModel: ShoppingBagViewModel
     @Environment(\.modelContext) private var context
     @Query private var productsInShoppingBag: [ShoppingBagModel]
-    //    @EnvironmentObject private var viewModel: MainPageViewModel
     
     private var Subtotal: String {
         let subtotalPrice =  productsInShoppingBag.reduce(0) { $0 + ($1.price ?? 0) }
@@ -29,23 +28,13 @@ struct ShoppingBag: View {
             ScrollView(.vertical) {
                 ForEach(productsInShoppingBag, id: \.id) { product in
                     HStack(alignment: .top) {
-                        let image = URL(string: product.image)
-                        
-                        AsyncImage(url: image) { image in
-                            image
-                                .resizable()
-                                .cornerRadius(20)
-                                .frame(width: 75, height: 90)
-                                .scaledToFill()
-                                .shadow(radius: 5)
-                            
-                        }
-                    placeholder: {
-                        ProgressView()
-                    }
+                        ImageView(imageJPG: product.image)
+                            .frame(width: screenWidth * 0.26, height: screenHeight * 0.16)
+                            .cornerRadius(16)
                         
                         VStack(alignment: .leading) {
                             JustifiedText(text: product.title)
+                            Spacer()
                             JustifiedText(text: product.formattedPrice)
                         }
                         
@@ -53,7 +42,6 @@ struct ShoppingBag: View {
 
                         AddToShoppingBagButton(product: CodableProductModel(id: product.productID, title: product.title, image: product.image))
                             .environmentObject(shoppingBagViewModel)
-                        
                     }
                     .padding()
                 }
@@ -102,6 +90,7 @@ struct ShoppingBag: View {
         }
     }
 }
+
 struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

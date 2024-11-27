@@ -9,12 +9,18 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 //import FirebaseCore
+//struct SignInError: Identifiable {
+//    let id = UUID()
+//    let message: String
+//}
 
 @MainActor
 class AuthenticationViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
-    
+    @Published var signInError: String?
+    @Published var registeringError: String?
+
     init() {
         self.userSession = Auth.auth().currentUser
         
@@ -37,6 +43,7 @@ class AuthenticationViewModel: ObservableObject {
             await fetchUser()
             
         } catch {
+            registeringError = error.localizedDescription
             print("failed to create user with error - \(error.localizedDescription)")
         }
         
@@ -50,6 +57,7 @@ class AuthenticationViewModel: ObservableObject {
             // MARK: - u have to sign in first and then fetch the useruid to display uder data
             await fetchUser()
         } catch {
+            signInError = error.localizedDescription
             print("failed to login with error - \(error.localizedDescription)")
         }
     }

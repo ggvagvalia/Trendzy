@@ -15,7 +15,8 @@ struct LoginScreen: View {
     @Binding var remember: Bool
     //    @Binding var showSignUp: Bool
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    
+    @State private var showAlert: Bool = false
+
 //    var action: () -> Void
     
     var body: some View {
@@ -42,15 +43,16 @@ struct LoginScreen: View {
                 }
                 
             }
-            //                                .padding()
             SignInUpButton(title: "Sign In") {
                 Task {
                     try await viewModel.singnIn(with: email, password: password)
+                    if viewModel.signInError != nil {
+                          showAlert = true
+                      }
                 }
             }
             .disabled(!formIssValid)
             .opacity(formIssValid ? 1.0 : 0.5)
-            //                .padding(.vertical)
             
             OrView(title: "or")
             
@@ -75,18 +77,18 @@ struct LoginScreen: View {
                             .tint(.primary)
 
             }
-            //            Button(action: {
-            //                email = ""
-            //                password = ""
-            //                withAnimation {
-            //                    showSignUp.toggle()
-            //                }
-            //            }, label: {
-            //                Text("Don't have an account? ***Sign up***")
-            //            })
-            //            .tint(.primary)
+
         }
         .padding()
+        .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Sign In Failed"),
+                        message: Text(viewModel.signInError ?? "Unknown error"),
+                        dismissButton: .default(Text("OK")) {
+                            viewModel.signInError = nil
+                        }
+                    )
+                }
     }
 }
 
@@ -195,7 +197,8 @@ extension LoginScreen: AuthenticationFormProtocol {
         return !email.isEmpty
         && email.contains("@")
         && !password.isEmpty
-        && password.count > 8
+        && password.count > 5
+        && password.filter { $0.isLetter }.count >= 6
     }
 }
 
